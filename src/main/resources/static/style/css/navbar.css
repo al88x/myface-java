@@ -1,0 +1,26 @@
+nav {
+  width: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  background-color: #343a40;
+  padding: 15px 0;
+}
+
+.navbar-item {
+  margin-left: 25px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 25px;
+  color: grey;
+}
+.navbar-item:hover {
+  color: lightgray;
+}
+.navbar-item:last-child {
+  text-align: right;
+  flex-grow: 1;
+  margin-right: 25px;
+}
+
+/*# sourceMappingURL=navbar.css.map */

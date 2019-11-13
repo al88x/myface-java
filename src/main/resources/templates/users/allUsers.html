@@ -2,7 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <!--@thymesVar id="model" type="techsmiths.myface.models.viewmodels.AllUsersViewModel"-->
 <head>
-    <title>Home Page :: My🙂Face</title>
+    <title>MyFace</title>
+    <link rel="stylesheet" href="/style/css/navbar.css"/>
+    <link rel="stylesheet" href="/style/css/general.css"/>
+    <link rel="stylesheet" href="/style/css/post.css"/>
 </head>
 
 <body>
@@ -11,12 +14,11 @@
 </header>
 
 <h1>All Users Page</h1>
-<a href="/users/create">Create new user</a>
 <section>
     <ol>
         <li th:each="user : ${model.getUsers()}">
             <h2 th:text="${'Username: ' + user.getUsername()}"></h2>
-            <a th:href="'/users/' + ${user.getId()}">Create new user</a>
+            <a th:href="'/users/' + ${user.getId()}">Edit user</a>
             <br>
             <img th:src="${user.getProfileImage()}" alt="User Profile Image"></img>
             <p th:text="${'First Name:' + user.getFirstName()}"></p>

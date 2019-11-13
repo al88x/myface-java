@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+
 <nav th:fragment="navbar">
-    <a href="/">Home</a>
-    <a href="/posts/">Posts</a>
-    <a href="/users/">Users</a>
+    <a href="/posts/" class="navbar-item">Posts</a>
+    <a href="/users/" class="navbar-item">Users</a>
+    <a th:if="${#httpServletRequest.requestURI} == '/users/'" href="/users/create" class="navbar-item">Create new
+        user</a>
+
+
 </nav>
 </html>

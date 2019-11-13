@@ -3,27 +3,40 @@
 
 <!--@thymesVar id="model" type="techsmiths.myface.models.viewmodels.AllPostsViewModel"-->
 <head>
-    <title>Home Page :: My🙂Face</title>
+    <title>MyFace</title>
+    <link rel="stylesheet" href="/style/css/navbar.css"/>
+    <link rel="stylesheet" href="/style/css/general.css"/>
+    <link rel="stylesheet" href="/style/css/post.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 <header>
-    <div th:replace="fragments/navbar :: navbar"/>
+    <nav th:replace="fragments/navbar :: navbar">
+        <a href="/posts/create" class="navbar-item">Create new post</a>
+    </nav>
 </header>
-<h1>All Posts Page</h1>
-<a href="/posts/create">Create new post</a>
 <section>
-    <ol>
-        <li th:each="post : ${model.getPosts()}">
-            <p th:text="${post.getMessage()}"></p>
-            <img th:src="${post.getImage()}" alt="Post Image"></img>
-            <p th:text="'Sender:' "></p>
-            <a th:href="'/users/'+${post.getSender().getId()}" th:text="${post.getSender().getUsername()}"></a>
-            <p th:text="'Receiver: '"></p>
-            <a th:href="'/users/'+${post.getReceiver().getId()}" th:text="${post.getReceiver().getUsername()}"></a>
+    <ol class="post-list">
+        <li th:each="post : ${model.getPosts()}" class="post">
+            <div>
+
+            <a th:href="'/users/'+${post.getSender().getId()}" th:text="${post.getSender().getDisplayName()}"
+               class="user-name"></a>
+            <svg class="user-name" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+            <a th:href="'/users/'+${post.getReceiver().getId()}" th:text="${post.getReceiver().getDisplayName()}"
+               class="user-name"></a>
+            </div>
+            <p th:text="${post.getMessage()}" class="description"></p>
+            <img class="post-image" th:src="${post.getImage()}" alt="Post Image"></img>
             <hr/>
         </li>
     </ol>
 </section>
+
+<a class="new-post-link" href="/posts/create">+</a>
 </body>
 </html>

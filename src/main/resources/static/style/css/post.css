@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+}
+
+.post-list {
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+
+.user-name {
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.description {
+  margin: 20px;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
+}
+
+.post {
+  margin: 20px 0;
+}
+
+.new-post-link {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background: #343a40;
+  text-align: center;
+  line-height: 80px;
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+hr {
+  margin: 0;
+  width: 100%;
+  padding: 2px;
+  border: none;
+  background-color: lightgray;
+}
+
+/*# sourceMappingURL=post.css.map */

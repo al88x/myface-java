@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<!--@thymesVar id="model" type="techsmiths.myface.models.viewmodels.AllPostsViewModel"-->
 <head>
     <title>Home Page :: My🙂Face</title>
 </head>
 
 <body>
+<header>
+    <div th:replace="fragments/navbar :: navbar"/>
+</header>
 <h1>All Posts Page</h1>
+<a href="/posts/create">Create new post</a>
+<section>
+    <ol>
+        <li th:each="post : ${model.getPosts()}">
+            <p th:text="${post.getMessage()}"></p>
+            <img th:src="${post.getImage()}" alt="Post Image"></img>
+            <p th:text="'Sender:' "></p>
+            <a th:href="'/users/'+${post.getSender().getId()}" th:text="${post.getSender().getUsername()}"></a>
+            <p th:text="'Receiver: '"></p>
+            <a th:href="'/users/'+${post.getReceiver().getId()}" th:text="${post.getReceiver().getUsername()}"></a>
+            <hr/>
+        </li>
+    </ol>
+</section>
 </body>
 </html>

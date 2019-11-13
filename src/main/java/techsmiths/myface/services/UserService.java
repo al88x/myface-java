@@ -18,6 +18,14 @@ public class UserService extends DatabaseService {
         );
     }
 
+    public List<User> getAllUsers() {
+        return jdbi.withHandle(handle ->
+                handle.createQuery("SELECT * FROM users")
+                        .mapToBean(User.class)
+                        .list()
+        );
+    }
+
     public User getUser(int id) {
         return jdbi.withHandle(handle ->
                 handle.createQuery("SELECT * FROM users WHERE id = :id")
@@ -30,13 +38,13 @@ public class UserService extends DatabaseService {
     public void updateUser(int id, User user) {
         jdbi.withHandle(handle ->
                 handle.createUpdate(
-                            "UPDATE users SET " +
-                                    "username = :username" +
-                                    "email = :email" +
-                                    "first_name = :firstName" +
-                                    "last_name = :lastName" +
-                                    "profile_image = :profileImage" +
-                                    "banner_image = :bannerImage" +
+                            "UPDATE IGNORE users SET " +
+                                    "username = :username," +
+                                    "email = :email," +
+                                    "first_name = :firstName," +
+                                    "last_name = :lastName," +
+                                    "profile_image = :profileImage," +
+                                    "banner_image = :bannerImage " +
                             "WHERE id = :id")
                         .bind("username", user.getUsername())
                         .bind("email", user.getEmail())

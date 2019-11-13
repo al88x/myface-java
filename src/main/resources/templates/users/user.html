@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--@thymesVar id="model" type="techsmiths.myface.controllers.UserController"-->
 <head>
     <title>Home Page :: My🙂Face</title>
 </head>
-
 <body>
+<header>
+    <div th:replace="fragments/navbar :: navbar"/>
+</header>
 <h1>User Page</h1>
+<section>
+    <form th:action="'/users/' + ${model.getId()}" method="post">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" th:value="${model.getUsername()}"><br>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" th:value="${model.getEmail()}"><br>
+        <label for="first_name">First Name: </label>
+        <input type="text" id="first_name" name="firstName" th:value="${model.getFirstName()}"><br>
+        <label for="last_name">Last Name: </label>
+        <input type="text" id="last_name" name="lastName" th:value="${model.getLastName()}"><br>
+
+        <label for="profile_image">Profile image url: </label>
+        <input type="text" id="profile_image" name="profileImage" th:value="${model.getProfileImage()}"><br>
+        <label for="banner_image">Banner image url: </label>
+        <input type="text" id="banner_image" name="bannerImage" th:value="${model.getBannerImage()}"><br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</section>
 </body>
 </html>

@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Home Page :: My🙂Face</title>
 </head>
-
+<script>
+    function validateForm() {
+        var a = document.forms["newUserForm"]["username"].value;
+        var b = document.forms["newUserForm"]["email"].value;
+        var c = document.forms["newUserForm"]["firstName"].value;
+        var d = document.forms["newUserForm"]["lastName"].value;
+        if (a === "" || b === "" || c === "" || d === "") {
+            alert("Please Enter All the Fields");
+            return false;
+        } else {
+            alert("Registered Successfully");
+        }
+    }
+</script>
 <body>
+<header>
+    <div th:replace="fragments/navbar :: navbar"/>
+</header>
 <h1>Create User Page</h1>
+<section>
+    <form name="newUserForm" action="/users/create" onsubmit="return validateForm()" method="post">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" value=""><br>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" value=""><br>
+        <label for="first_name">First Name: </label>
+        <input type="text" id="first_name" name="firstName" value=""><br>
+        <label for="last_name">Last Name: </label>
+        <input type="text" id="last_name" name="lastName" value=""><br>
+
+        <label for="profile_image">Profile image url: </label>
+        <input type="text" id="profile_image" name="profileImage" value=""><br>
+        <label for="banner_image">Banner image url: </label>
+        <input type="text" id="banner_image" name="bannerImage" value=""><br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</section>
 </body>
 </html>

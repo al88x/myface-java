@@ -2,6 +2,7 @@ package techsmiths.myface.services;
 
 import org.jdbi.v3.core.mapper.reflect.BeanMapper;
 import org.springframework.stereotype.Service;
+import techsmiths.myface.models.apimodels.CreatePostModel;
 import techsmiths.myface.models.dbmodels.Post;
 import techsmiths.myface.models.dbmodels.Receiver;
 import techsmiths.myface.models.dbmodels.Sender;
@@ -58,15 +59,15 @@ public class PostService extends DatabaseService {
         );
     }
 
-    public void createPost(Post post) {
+    public void createPost(CreatePostModel post) {
         jdbi.withHandle(handle ->
                 handle.createUpdate(
                         "INSERT INTO posts " +
                                 "(sender_user_id, receiver_user_id, message, image) " +
                                 "VALUES " +
                                 "(:senderUserId, :receiverUserId, :message, :image)")
-                        .bind("senderUserId", post.getSender().getId())
-                        .bind("receiverUserId", post.getReceiver().getId())
+                        .bind("senderUserId", post.getSenderId())
+                        .bind("receiverUserId", post.getReceiverId())
                         .bind("message", post.getMessage())
                         .bind("image", post.getImage())
                         .execute()

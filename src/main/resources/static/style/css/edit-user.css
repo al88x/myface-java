@@ -1,0 +1,66 @@
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+header {
+  position: sticky;
+  top: 0;
+}
+
+body {
+  margin: 0px;
+  background-color: lightgray;
+}
+
+.edit-profile-image {
+  position: absolute;
+  top: 50px;
+}
+
+.edit-banner-image {
+  position: absolute;
+  top: 20px;
+  left: 120px;
+}
+
+.edit-name {
+  display: flex;
+  position: absolute;
+  top: 90px;
+  left: 120px;
+}
+
+.edit-first-last-name {
+  font-weight: bold;
+  width: 100px;
+}
+
+.edit-user-name {
+  position: absolute;
+  top: 110px;
+  left: 120px;
+}
+
+.edit-email-text {
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.edit-submit {
+  height: 20px;
+  width: 50px;
+  font-size: 9px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 20px;
+  margin: 10px 20px 20px 20px;
+  background-color: #343a40;
+  color: white;
+  border: none;
+}
+.edit-submit:hover {
+  background-color: grey;
+}
+
+/*# sourceMappingURL=edit-user.css.map */

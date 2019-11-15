@@ -1,17 +1,25 @@
-$margin: 20px;
+@import 'general';
 
-body {
-  margin: 0;
-}
+$margin: 20px;
+$new-post-button-size: 80px;
+
+
+
+
+
 
 .post-list {
-  padding-inline-start: 0;
-  list-style-type: none;
+  @include gridList;
 }
 
 .user-name{
-  margin-left: $margin;
   font-weight: bold;
+  line-height: 15px;
+  margin-right: 5px;
+
+  &:hover{
+    color:$dark-grey-color;
+  }
 }
 
 .description{
@@ -19,19 +27,18 @@ body {
 }
 
 .post-image {
-  width: 100%;
-  height: auto;
-  margin: $margin auto;
+@include imageScale;
+  height: 600px;
+  margin-bottom: $margin;
+  background-color: grey;
 }
 
 .post{
-  margin:$margin 0;
+ @include listItem;
 }
 
-$new-post-button-size: 80px;
-$dark-grey-color: #343a40;
 
-.new-post-link {
+.create-link {
   border-radius: 50%;
   width: $new-post-button-size;
   height: $new-post-button-size;
@@ -45,14 +52,15 @@ $dark-grey-color: #343a40;
   position: fixed;
   bottom: 20px;
   right: 20px;
+  box-shadow: 5px 5px 20px grey;
 
-
+  &:hover{
+    background-color: grey;
+  }
 }
 
-hr{
-  margin: 0;
-  width: 100%;
-  padding: 2px;
-  border: none;
-  background-color: lightgray;
+.user-name-line{
+  display: flex;
+  margin-left: 20px;
 }
+

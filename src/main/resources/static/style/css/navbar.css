@@ -6,6 +6,7 @@ nav {
   align-items: baseline;
   background-color: #343a40;
   padding: 15px 0;
+  position: sticky;
 }
 
 .navbar-item {
@@ -16,11 +17,6 @@ nav {
 }
 .navbar-item:hover {
   color: lightgray;
-}
-.navbar-item:last-child {
-  text-align: right;
-  flex-grow: 1;
-  margin-right: 25px;
 }
 
 /*# sourceMappingURL=navbar.css.map */

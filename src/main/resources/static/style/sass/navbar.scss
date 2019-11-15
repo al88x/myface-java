@@ -10,6 +10,7 @@ nav {
 
   background-color: $dark-grey-color;
   padding: 15px 0;
+  position: sticky;
 }
 
 .navbar-item {
@@ -21,11 +22,5 @@ nav {
 
   &:hover {
     color: lightgray;
-  }
-
-  &:last-child {
-    text-align: right;
-    flex-grow: 1;
-    margin-right: 25px;
   }
 }

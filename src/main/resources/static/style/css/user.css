@@ -1,0 +1,102 @@
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+header {
+  position: sticky;
+  top: 0;
+}
+
+body {
+  margin: 0px;
+  background-color: lightgray;
+}
+
+.user-list {
+  padding-inline-start: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user {
+  position: relative;
+  margin: 5px;
+  max-width: 350px;
+  background-color: white;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 0px;
+}
+
+.banner-image {
+  width: 350px;
+  height: 80px;
+  background: grey;
+  color: grey;
+}
+
+.profile-image {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  top: 40px;
+  left: 20px;
+  right: 20px;
+  border: 1px solid white;
+  background: grey;
+  color: grey;
+}
+
+.display-name {
+  margin-top: 8px;
+  margin-left: 120px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.username {
+  color: grey;
+  margin-left: 120px;
+  font-size: 10px;
+  margin-top: 0px;
+}
+
+.email-line {
+  display: flex;
+  margin-left: 20px;
+  height: 20px;
+}
+
+.email-icon {
+  height: 20px;
+}
+
+.email-text {
+  margin-top: 0;
+  margin-left: 10px;
+  line-height: 20px;
+}
+
+.edit-link {
+  height: 20px;
+  width: 50px;
+  font-size: 9px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 20px;
+  margin: 10px 20px 20px 20px;
+  background-color: #343a40;
+  color: white;
+}
+.edit-link:hover {
+  background-color: grey;
+}
+
+/*# sourceMappingURL=user.css.map */

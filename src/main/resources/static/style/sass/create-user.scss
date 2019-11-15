@@ -1,0 +1,43 @@
+@import "general";
+
+.create-first-last-name{
+  display: flex;
+  padding-top: 20px;
+  margin: $margin;
+  width: 120px;
+}
+
+.first-name{
+  padding-right: 10px;
+}
+
+.create-user{
+  margin: 5px;
+  padding: $margin;
+  background-color: white;
+  width: 350px;
+
+}
+
+.field{
+  margin-top: $margin;
+  padding-left: 10px;
+  width: 330px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: white;
+  border: 1px solid $dark-grey-color;
+}
+.error-message{
+  margin-top: 3px;
+  font-size: 14px;
+  color: red;
+}
+
+.error{
+  border-color: red;
+}
+
+
+

@@ -6,29 +6,32 @@
     <link rel="stylesheet" href="/style/css/navbar.css"/>
     <link rel="stylesheet" href="/style/css/general.css"/>
     <link rel="stylesheet" href="/style/css/post.css"/>
+    <link rel="stylesheet" href="/style/css/user.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 <header>
     <div th:replace="fragments/navbar :: navbar"/>
 </header>
-
-<h1>All Users Page</h1>
 <section>
-    <ol>
-        <li th:each="user : ${model.getUsers()}">
-            <h2 th:text="${'Username: ' + user.getUsername()}"></h2>
-            <a th:href="'/users/' + ${user.getId()}">Edit user</a>
-            <br>
-            <img th:src="${user.getProfileImage()}" alt="User Profile Image"></img>
-            <p th:text="${'First Name:' + user.getFirstName()}"></p>
-            <p th:text="${'LastName: ' + user.getLastName()}"></p>
-            <p th:text="${'Email: ' + user.getEmail()}"></p>
-            <img th:src="${user.getBannerImage()}" alt="User Banner Image"></img><br>
-            <hr/>
+    <ol class="user-list">
+        <li th:each="user : ${model.getUsers()}" class="user">
+            <img class="banner-image" th:src="${user.getBannerImage()}" alt="User Banner Image"></img>
+            <img class="profile-image" th:src="${user.getProfileImage()}" alt="User Profile Image"></img>
+            <p class="display-name" th:text="${user.getDisplayName()}"></p>
+            <p class="username" th:text="${user.getUsername()}"></p>
+            <div class="email-line">
+                <svg class="email-icon" width="13" height="13" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                </svg>
+                <p class="email-text" th:text="${user.getEmail()}"></p>
+            </div>
+            <a class="edit-link" th:href="'/users/' + ${user.getId()}">Edit</a>
         </li>
 
     </ol>
 </section>
+<a class="create-link" href="/users/create">+</a>
 </body>
 </html>

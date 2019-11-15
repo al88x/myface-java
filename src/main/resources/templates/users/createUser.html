@@ -1,45 +1,112 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Home Page :: My🙂Face</title>
+    <title>MyFace</title>
+    <link rel="stylesheet" href="/style/css/navbar.css"/>
+    <link rel="stylesheet" href="/style/css/general.css"/>
+    <link rel="stylesheet" href="/style/css/post.css"/>
+    <link rel="stylesheet" href="/style/css/user.css"/>
+    <link rel="stylesheet" href="/style/css/edit-user.css"/>
+    <link rel="stylesheet" href="/style/css/create-user.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <script>
     function validateForm() {
-        var a = document.forms["newUserForm"]["username"].value;
-        var b = document.forms["newUserForm"]["email"].value;
-        var c = document.forms["newUserForm"]["firstName"].value;
-        var d = document.forms["newUserForm"]["lastName"].value;
-        if (a === "" || b === "" || c === "" || d === "") {
-            alert("Please Enter All the Fields");
-            return false;
-        } else {
-            alert("Registered Successfully");
+    var emailPattern = /[^@]+@[^\.]+\..+/;
+    var validUrl = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/;
+        var usernameWithSpacePattern = /^$|\s+/;
+        var returnValue = true;
+        if (document.newUserForm.firstName.value === "") {
+            document.getElementById('error_firstName').innerHTML = "Please enter First Name";
+            document.getElementById("first_name").className = "field error";
+            returnValue = false;
+        }else {
+            document.getElementById('error_firstName').innerHTML = "";
+            document.getElementById("first_name").className = "field";
         }
+
+        if (document.newUserForm.lastName.value === "") {
+            document.getElementById('error_lastName').innerHTML = "Please enter Last Name";
+            document.getElementById("last_name").className = "field error";
+            returnValue = false;
+        }else {
+            document.getElementById('error_lastName').innerHTML = "";
+            document.getElementById("last_name").className = "field";
+        }
+
+
+        if (usernameWithSpacePattern.test(document.newUserForm.username.value)) {
+            document.getElementById('error_userName').innerHTML = "Please enter valid username. Spaces are not allowed";
+            document.getElementById("user_name").className= "field error";
+            returnValue = false;
+        }else {
+            document.getElementById('error_userName').innerHTML = "";
+            document.getElementById("user_name").className = "field";
+        }
+
+        if (validUrl.test(document.newUserForm.bannerImage.value)) {
+            document.getElementById('error_banner_image').innerHTML = "";
+            document.getElementById("banner_image").className = "field";
+        }else {
+            document.getElementById('error_banner_image').innerHTML = "Please enter a valid url";
+            document.getElementById("banner_image").className = "field error";
+            returnValue = false;
+        }
+
+
+        if (validUrl.test(document.newUserForm.profileImage.value)) {
+            document.getElementById('error_profile_image').innerHTML = "";
+            document.getElementById("profile_image").className = "field";
+        }else {
+            document.getElementById('error_profile_image').innerHTML = "Please enter a valid url";
+            document.getElementById("profile_image").className = "field error";
+            returnValue = false;
+        }
+
+
+
+        if (emailPattern.test(document.newUserForm.email.value)) {
+            document.getElementById('error_email').innerHTML = "";
+            document.getElementById("email").className = "field";
+        }else{
+            document.getElementById('error_email').innerHTML = "Please enter a valid email";
+            document.getElementById("email").className = " field error";
+            returnValue = false;
+        }
+
+        return returnValue;
     }
 </script>
 <body>
 <header>
     <div th:replace="fragments/navbar :: navbar"/>
 </header>
-<h1>Create User Page</h1>
 <section>
-    <form name="newUserForm" action="/users/create" onsubmit="return validateForm()" method="post">
-        <label for="username">Username: </label>
-        <input type="text" id="username" name="username" value=""><br>
-        <label for="email">Email: </label>
-        <input type="text" id="email" name="email" value=""><br>
-        <label for="first_name">First Name: </label>
-        <input type="text" id="first_name" name="firstName" value=""><br>
-        <label for="last_name">Last Name: </label>
-        <input type="text" id="last_name" name="lastName" value=""><br>
+    <div class="create-user">
+        <h1>Create new user:</h1>
+        <form name="newUserForm" action="/users/create" onsubmit="return validateForm()" method="post">
+            <input class="field" placeholder="First name" type="text" id="first_name" name="firstName">
+            <p class="error-message" id="error_firstName"></p>
 
-        <label for="profile_image">Profile image url: </label>
-        <input type="text" id="profile_image" name="profileImage" value=""><br>
-        <label for="banner_image">Banner image url: </label>
-        <input type="text" id="banner_image" name="bannerImage" value=""><br>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+            <input class="field" placeholder="Last name" type="text" id="last_name" name="lastName">
+            <p class="error-message" id="error_lastName"></p>
+
+            <input class="field" placeholder="username" type="text" id="user_name" name="username">
+            <p class="error-message" id="error_userName"></p>
+            <input class="field" placeholder="Banner image url" type="text" id="banner_image"
+                   name="bannerImage">
+
+            <p class="error-message" id="error_banner_image"></p>
+            <input class="field" placeholder="Profile image url" type="text" id="profile_image"
+                   name="profileImage">
+            <p class="error-message" id="error_profile_image"></p>
+            <input class="field" placeholder="Email" type="text" id="email" name="email"><br>
+            <p class="error-message" id="error_email"></p>
+            <input class="submit-button-create-user" type="submit" value="Submit">
+        </form>
+    </div>
 </section>
 </body>
 </html>

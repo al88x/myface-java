@@ -2,36 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <!--@thymesVar id="model" type="techsmiths.myface.models.viewmodels.AllUsersViewModel"-->
 <head>
-    <title>Home Page :: My🙂Face</title>
+    <title>MyFace</title>
+    <link rel="stylesheet" href="/style/css/navbar.css"/>
+    <link rel="stylesheet" href="/style/css/general.css"/>
+    <link rel="stylesheet" href="/style/css/post.css"/>
+    <link rel="stylesheet" href="/style/css/edit-user.css"/>
+    <link rel="stylesheet" href="/style/css/create-post.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-<header>
+<header class="sticky-nav">
     <div th:replace="fragments/navbar :: navbar"/>
 </header>
-
-<h1>Create Post Page</h1>
 <section>
-    <form action="/posts/create" method="post">
-        <label for="sender">Sender: </label>
-        <select id="sender" name="senderId" value="Select user">
-            <div th:each="user: ${model.getUsers()}">
-                <option th:value="${user.getId()}" th:text="${user.getUsername()}">Select User</option>
+    <div class="post">
+        <form action="/posts/create" method="post">
+            <div class="user-name-line">
+                <select id="sender" name="senderId" value="Select user">
+                    <div th:each="user: ${model.getUsers()}">
+                        <option th:value="${user.getId()}" th:text="${user.getUsername()}">Select User</option>
+                    </div>
+                </select>
+                <svg class="user-name" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+                <select id="receiver" name="receiverId" value="Select user">
+                    <div th:each="user: ${model.getUsers()}">
+                        <option th:value="${user.getId()}" th:text="${user.getUsername()}">Select User</option>
+                    </div>
+                </select><br>
             </div>
-        </select><br>
-        <label for="receiver">Receiver: </label>
-        <select id="receiver" name="receiverId" value="Select user">
-            <div th:each="user: ${model.getUsers()}">
-                <option th:value="${user.getId()}" th:text="${user.getUsername()}">Select User</option>
-            </div>
-        </select><br>
-        <label for="message">Message: </label>
-        <input type="text" id="message" name="message" value=""><br>
-        <label for="image">Image url: </label>
-        <input type="text" id="image" name="image" value=""><br>
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+            <input class="message-create-post" placeholder="Message" type="text" id="message" name="message" value=""><br>
+            <input class="input-post-image" placeholder="Image url" type="text" id="image" name="image" value=""><br>
+            <input class="edit-submit" type="submit" value="Submit">
+        </form>
+    </div>
 </section>
 </body>
 </html>

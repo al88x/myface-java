@@ -5,9 +5,5 @@
 <nav th:fragment="navbar">
     <a href="/posts/" class="navbar-item">Posts</a>
     <a href="/users/" class="navbar-item">Users</a>
-    <a th:if="${#httpServletRequest.requestURI} == '/users/'" href="/users/create" class="navbar-item">Create new
-        user</a>
-
-
 </nav>
 </html>

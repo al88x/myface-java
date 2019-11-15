@@ -1,0 +1,78 @@
+@import "general";
+
+.user-list{
+  @include gridList;
+}
+
+.user{
+  position: relative;
+  @include listItem;
+  padding-top: 0px;
+}
+
+.banner-image{
+
+  width: $max-width;
+  height: $image-height;
+  background: grey;
+  color: grey;
+}
+
+.profile-image{
+  position: absolute;
+  height: $image-height;
+  width: $image-height;
+  top: 40px;
+  left: 20px;
+  right: 20px;
+  border: 1px solid white;
+  background: grey;
+  color: grey;
+
+}
+
+.display-name{
+  margin-top: 8px;
+  margin-left: 120px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.username{
+  color: grey;
+  margin-left: 120px;
+  font-size: 10px;
+  margin-top: 0px;
+}
+
+.email-line{
+  display: flex;
+  margin-left: $margin;
+  height: 20px;
+}
+.email-icon{
+  height: 20px;
+}
+
+.email-text{
+  margin-top: 0;
+  margin-left: 10px;
+  line-height: 20px;
+}
+
+.edit-link{
+  height: 20px;
+  width: 50px;
+  font-size: 9px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 20px;
+  margin: 10px 20px 20px $margin;
+  background-color: $dark-grey-color;
+  color: white;
+
+  &:hover{
+    background-color: grey;
+  }
+}

@@ -1,15 +1,34 @@
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+header {
+  position: sticky;
+  top: 0;
+}
+
 body {
-  margin: 0;
+  margin: 0px;
+  background-color: lightgray;
 }
 
 .post-list {
   padding-inline-start: 0;
   list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .user-name {
-  margin-left: 20px;
   font-weight: bold;
+  line-height: 15px;
+  margin-right: 5px;
+}
+.user-name:hover {
+  color: #343a40;
 }
 
 .description {
@@ -17,16 +36,24 @@ body {
 }
 
 .post-image {
-  width: 100%;
+  width: 350px;
   height: auto;
-  margin: 20px auto;
+  height: 600px;
+  margin-bottom: 20px;
+  background-color: grey;
 }
 
 .post {
-  margin: 20px 0;
+  margin: 5px;
+  max-width: 350px;
+  background-color: white;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.new-post-link {
+.create-link {
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -39,14 +66,15 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  box-shadow: 5px 5px 20px grey;
+}
+.create-link:hover {
+  background-color: grey;
 }
 
-hr {
-  margin: 0;
-  width: 100%;
-  padding: 2px;
-  border: none;
-  background-color: lightgray;
+.user-name-line {
+  display: flex;
+  margin-left: 20px;
 }
 
 /*# sourceMappingURL=post.css.map */
